@@ -1,6 +1,48 @@
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { useEffect, useRef } from "react";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import { ProductCard } from "./ProductCard";
+import SliderCard from "../Components/Home/SliderCard";
+import Footer from "../Components/Footer";
+import FeatureCard from "../Components/Home/FeatureCard";
 
 const Home = () => {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const nextBtnRef = useRef<HTMLButtonElement | null>(null);
+  const previousBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+
+    if (scrollContainer) {
+      const handleWheel = (e: WheelEvent) => {
+        e.preventDefault();
+        scrollContainer.scrollLeft += e.deltaY;
+      };
+
+      const handleNextClick = () => {
+        scrollContainer.scrollLeft += 180;
+      };
+
+      const handlePreviousClick = () => {
+        scrollContainer.scrollLeft -= 180;
+      };
+
+      scrollContainer.addEventListener("wheel", handleWheel);
+
+      nextBtnRef.current?.addEventListener("click", handleNextClick);
+      previousBtnRef.current?.addEventListener("click", handlePreviousClick);
+
+      return () => {
+        scrollContainer.removeEventListener("wheel", handleWheel);
+        nextBtnRef.current?.removeEventListener("click", handleNextClick);
+        previousBtnRef.current?.removeEventListener(
+          "click",
+          handlePreviousClick
+        );
+      };
+    }
+  }, []);
+
   interface Step {
     heading: string;
     para: string;
@@ -39,98 +81,108 @@ const Home = () => {
   );
 
   return (
-    <div className="  w-full h-screen ">
-      <div className=" image bg-[url('../src/assets/images/hero-mobile-4.png')] lg:bg-none lg:bg-black lg:h-[100%] ">
-        <div className=" pt-28 flex flex-col items-center lg:items-start justify-start h-full text-white px-10 font-song lg:px-16 lg:pt-48 ">
-          <h1 className="flex  text-[2.4rem] font-semibold lg:text-[5.5rem] text-white flex-col text-center lg:text-left lg:leading-[5rem] ">
-            Refillable,
-            <br />
-            natural,
-            <br />
-            scent-sational.
+    <section className="font-space">
+      <div className="w-full bg-[url('https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1549839389454-V3EMXKBSKP3WS3IAJ9WE/yellow_messy_2000x1350_v2.jpg?format=1500w')] h-screen bg-center bg-no-repeat  " />
+      <div className="w-full py-16 md:px-[3rem] lg:flex px-5 lg:px-[5rem] lg:gap-x-[1.3rem] bg-[url('https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1718993730398-OJQU6OW9BUF7LY0T9B52/Scoop+AShop+2.png?format=2500w')]  bg-no-repeat ">
+        <span className="lg:w-[50%] pb-20 ">
+          <img
+            className="  "
+            src="https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/419f19c0-f625-419b-905d-e04384d456b5/Untitled+design+%281%29.png?format=750w"
+            alt=""
+          />
+        </span>
+        <div className="flex lg:w-[50%] flex-col gap-y-6 py-12 lg:gap-y-[4rem] text-right ">
+          <h1 className="font-normal text-[2rem] leading-[2rem] lg:text-[3rem] lg:leading-[3.5rem] ">
+            Cause the only thing that should melt down is ice cream.
           </h1>
-          <p className="hidden mt-6 text-[1.1rem] lg:flex">
-            Redefine your bathroom with our deodorant,
-            <br />
-            body wash, lip balm and so much more.
-            <br />
-            Plastic waste stinks, but you don’t have to.
+          <p className="leading-[1.6rem] font-normal text-[1.2rem] tracking-[0.6px] lg:text-[1.5rem] ">
+            Artificially dyed cakes made us cringe, but plain white swirls left
+            us sulking. So we followed the rainbow to a fresh recipe for vibrant
+            frostings — made from ingredients that made us proud, and bursting
+            with the incredible taste of real buttercream.
           </p>
-          <div className="btncontainer flex flex-col gap-y-6 pt-10 font-poppins -tracking-[0.4px] text-[0.9rem] font-semibold items-center justify-center lg:flex-row lg:gap-x-4 ">
-            <button className=" w-[12rem] lg:w-[14rem] px-4 h-[2.9rem] lg:h-[3.5rem] lg:rounded-lg lg:px-6  bg-n-5 rounded-md flex items-center  justify-between ">
-              SHOP DEODORANT
-              <MdKeyboardArrowRight className="bg-white/25 rounded-full h-[1.45rem] w-[1.45rem] p-1" />
-            </button>
-            <button className=" w-[12rem] lg:w-[14rem] px-4 h-[2.9rem] lg:h-[3.5rem] lg:rounded-lg lg:px-6 bg-n-1  text-black rounded-md flex items-center justify-between ">
-              SHOP BODY WASH
-              <MdKeyboardArrowRight className="bg-black/25 rounded-full h-[1.45rem] w-[1.45rem] p-1" />
-            </button>
-          </div>
+          <button className=" text-right text-[2rem] font-semibold hover:text-white group relative lg:text-[3rem]  ">
+            Shop frostings.
+            <span className="absolute right-0 bottom-0 w-0 h-[3px] bg-white transition-all duration-500 group-hover:w-[13.5rem] lg:group-hover:w-[21rem] "></span>
+          </button>
         </div>
       </div>
-      {/* As you wish */}
-
-      {/* 👇 downside of home */}
-      <section className=" mt-28 w-full h-full px-10 py-3 lg:py-0 ">
-        <h1 className="text-[1.5rem]  font-song tracking-[0.5px] text-center font-semibold lg:text-[2.5rem] md:px-[10rem] lg:px-[8rem] xl:px-[20rem] ">
-          High-performing, natural body care without the waste.
-        </h1>
-        <div className="bodycare lg:mt-16 mt-8 flex flex-col lg:flex-row  w-full h-[12rem] text-center lg:px-[3rem]  gap-y-[3rem] xl:px-[15rem]   ">
-          {/* Up Wards */}
-          <div className="w-full h-[50%]  flex items-center justify-center  gap-x-4 lg:gap-x-10 ">
-            <div className="flex w-[50%] h-full  flex-col gap-y-1 ">
-              <span className="text-[1.2rem] lg:text-[1.4rem] ">👃</span>
-              <h1 className=" lg:font-bold font-semibold lg:text-[1.3rem] text-[1.1rem] -tracking-[0.2px] ">
-                Effective
-              </h1>
-              <p className=" lg:leading-[2rem] leading-[1.7rem] lg:text-[1rem] text-[0.9rem] tracking-[0.2px] ">
-                Rigorously tried, tested and customer approved
-              </p>
-            </div>
-            <div className="flex w-[50%] h-full  flex-col gap-y-1 ">
-              <span className="text-[1.2rem] lg:text-[1.4rem] ">❌</span>
-              <h1 className=" lg:font-bold font-semibold lg:text-[1.3rem] text-[1.1rem] -tracking-[0.2px] ">
-                No waste
-              </h1>
-              <p className=" lg:leading-[2rem] leading-[1.7rem] lg:text-[1rem] text-[0.9rem] tracking-[0.2px] ">
-                Unique plastic-free, compostable refills
-              </p>
-            </div>
-          </div>
-          {/* Down Wards */}
-          <div className="w-full h-[50%]  flex items-center justify-center  gap-x-4 ">
-            <div className="flex w-[50%] h-full  flex-col gap-y-1 ">
-              <span className="text-[1.2rem] lg:text-[1.4rem] ">🌱</span>
-              <h1 className=" lg:font-bold font-semibold lg:text-[1.3rem] text-[1.1rem] -tracking-[0.2px] ">
-                Naturally vegan
-              </h1>
-              <p className=" lg:leading-[2rem] leading-[1.7rem] lg:text-[1rem] text-[0.9rem] tracking-[0.2px] ">
-                Powered by plants, not parabens or aluminium
-              </p>
-            </div>
-            <div className="flex w-[50%] h-full  flex-col gap-y-1 ">
-              <span className="text-[1.2rem] lg:text-[1.4rem] ">📦</span>
-              <h1 className=" lg:font-bold font-semibold lg:text-[1.3rem] text-[1.1rem] -tracking-[0.2px] ">
-                Convenient
-              </h1>
-              <p className=" lg:leading-[2rem] leading-[1.7rem] lg:text-[1rem] text-[0.9rem] tracking-[0.2px] ">
-                Delivered through your letterbox when needed
-              </p>
-            </div>
-          </div>
+      <div className="w-full mt-32 md:px-[3rem] lg:flex px-5 lg:px-[5rem] lg:gap-x-[1.3rem] ">
+        <div className="flex lg:w-[50%] flex-col gap-y-6 lg:gap-y-[4rem] ">
+          <h1 className="font-normal text-[2rem] leading-[2rem] lg:text-[3rem] lg:leading-[3.5rem] ">
+            Raise your hand for real rainbows.
+          </h1>
+          <p className="leading-[1.6rem] font-normal text-[1.2rem] tracking-[0.6px] lg:text-[1.5rem] ">
+            In the world of playful baking chips, colors come with a side of
+            chemicals. So we created the first colorful chip made with colors
+            from plants, and a rich & creamy sweetness from coconut milk and
+            organic, non-gmo cane sugar.
+          </p>
+          <button className="text-left text-[2rem] font-semibold hover:text-yellow group relative lg:text-[3rem]  ">
+            Shop chips.
+            <span className="absolute left-0 bottom-0 w-0 h-[3px] lg:mb-1 bg-n-1 transition-all duration-500 group-hover:w-[10.3rem] lg:group-hover:w-[15.7rem] "></span>
+          </button>
         </div>
+        <span className="lg:w-[50%] pb-20 ">
+          <img
+            className="  "
+            src="https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/9bdca4a8-9c77-4e60-b91a-75f4772d284f/Supernatural-Rainbow-Chips_230929.png?format=750w"
+            alt=""
+          />
+        </span>
+      </div>
 
-        <h1 className=" tracking-1 text-[2.8rem] pt-[7.5rem] lg:pt-[1.5rem] lg:text-[5.8rem] text-center font-song font-bold ">
-          How it works
-        </h1>
+      <div className="w-full mt-32 md:px-[3rem] lg:flex px-5 lg:px-[5rem] bg-n-2 lg:gap-x-[1.3rem] py-16 ">
+        <span className="lg:w-[50%] pb-20 ">
+          <img
+            className="  "
+            src="https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/b22172bc-0672-457e-8eba-325e93f5d2be/Untitled+design+%284%29.png?format=750w"
+            alt=""
+          />
+        </span>
+        <div className="flex lg:w-[50%] flex-col gap-y-6 py-20 text-white lg:gap-y-[4rem] text-right ">
+          <h1 className="font-normal text-[2rem] leading-[2rem] lg:text-[3rem] lg:leading-[3.5rem] ">
+            Let’s party with plants.
+          </h1>
+          <p className="leading-[1.6rem] font-normal text-[1.2rem] tracking-[0.6px] lg:text-[1.5rem] ">
+            Artificially dyed cakes made us cringe, but plain white swirls left
+            us sulking. So we followed the rainbow to a fresh recipe for vibrant
+            frostings — made from ingredients that made us proud, and bursting
+            with the incredible taste of real buttercream.
+          </p>
+          <button className=" text-right text-[2rem] font-semibold hover:text-black group relative lg:text-[3rem]  ">
+            Shop frostings.
+            <span className="absolute right-0 bottom-0 w-0 h-[3px] bg-black transition-all duration-500 group-hover:w-[13.7rem] lg:group-hover:w-[20.3rem] "></span>
+          </button>
+        </div>
+      </div>
 
-        <section className=" w-full h-full flex items-center md:px-10  flex-col py-8 ">
-          <div className="w-full md:w-[40rem]  lg:w-[45rem] py-8 px-6 border border-n-1 rounded-3xl shadow-sm shadow-black/25 ">
-            <StepsList steps={stepData} />
-          </div>
-        </section>
-      </section>
-    </div>
+      <div className="w-full md:px-[3rem] lg:flex px-5 lg:px-[5rem] bg-[url('https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1648661995656-4SZCU65IGBASAL61YRA9/Untitled+design+%285%29.png?format=2500w')] bg-center bg-cover bg-no-repeat lg:gap-x-[1.3rem] py-24 text-white ">
+        <div className="flex lg:w-[50%] flex-col gap-y-6 lg:gap-y-[4rem] ">
+          <h1 className="font-normal text-[2rem] leading-[2rem] lg:text-[3rem] lg:leading-[3.5rem] ">
+            Big bags for big fans.
+          </h1>
+          <p className="leading-[1.6rem] font-normal text-[1.2rem] tracking-[0.6px] lg:text-[1.5rem] ">
+            Save up to 35% with extra large bags of our bestselling dye-free
+            sprinkles, perfect for bakeries, scoop shops, and extremely lucky
+            children.
+          </p>
+          <button className="text-left text-[2rem] font-semibold hover:text-black group relative lg:text-[3rem]  ">
+            Shop big bags.
+            <span className="absolute left-0 bottom-0 w-0 h-[3px] lg:mb-1 bg-black transition-all duration-500 group-hover:w-[13.4rem] lg:group-hover:w-[21rem] "></span>
+          </button>
+        </div>
+        <span className="lg:w-[50%]  pb-20 ">
+          <img
+            className=" md:w-[30rem] lg:w-auto mx-auto my-auto "
+            src="https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/967c3c2f-85a1-4e02-a455-2cfcee86390a/Supernatural_Rainbow-Softies-1lb_2204.png?format=750w"
+            alt=""
+          />
+        </span>
+      </div>
+
+      <Footer />
+    </section>
   );
 };
 

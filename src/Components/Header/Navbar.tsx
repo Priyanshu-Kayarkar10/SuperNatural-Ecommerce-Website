@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { HiMenuAlt4 } from "react-icons/hi";
-import { IoCartSharp } from "react-icons/io5";
-import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
+import { GoPlus } from "react-icons/go";
+import { RiArrowLeftDoubleLine, RiArrowRightDoubleLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
-import {
-  AboutComponent,
-  BodyWashComponent,
-  DeodorantComponent,
-  FlyoutLink,
-  LipBalmComponent,
-} from "./Dropdown";
+import { FlyoutLink, ShopComponent } from "./Dropdown";
 
 const Navbar: React.FC = () => {
   const [isDropDownActive, setIsDropDownActive] = useState<boolean>(false);
+  const [isDropDownTextActive, setIsDropDownTextActive] =
+    useState<boolean>(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -36,112 +31,125 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="navbar  absolute bg-transparent h-[4.8rem] w-full flex items-center justify-between md:gap-x-0 gap-x-[1rem] lg:px-14 px-12 pt-5 font-poppins  ">
-      <div
-        id="sidebar"
-        className={`absolute inset-0 bg-n-1 w-full z-10 py-6 h-screen overflow-scroll px-8 lg:hidden transition-transform transform ${
-          isDropDownActive ? "translate-y-0" : "-translate-y-full"
-        } ease-in delay-75 duration-300`}
+    <nav className="navbar absolute w-full h-[6rem] bg-transparent overflow-visible flex items-center justify-between px-5 md:px-[3rem] md:py-[6.5rem] {overflow-hidden} z-50 font-space lg:px-[5rem] ">
+      <section
+        className={` md:hidden fixed top-0 right-0 w-full h-full bg-n-1 transition-transform transform ${
+          isDropDownActive ? "translate-x-0" : "translate-x-full"
+        } ease-in-out duration-300`}
+        style={{ zIndex: 1000 }}
       >
-        <div className="flex flex-col gap-y-[2rem] w-full h-full text-white font-spartan ">
-          <RxCross2
-            onClick={() => {
-              setIsDropDownActive(false);
-            }}
-            className="cursor-pointer hover:opacity-[0.5] text-black bg-n-2 p-[0.7rem] w-[2.3rem] h-[2.3rem] rounded-full"
-          />
-          <div className="flex flex-col gap-y-3">
-            <div className="cursor-pointer w-full h-24 bg-n-3 rounded-lg flex items-center justify-between px-6">
-              <h1 className="font-semibold text-lg tracking-wide">
-                Deodorant
-                <p className="font-normal  text-sm">Get Started</p>
-              </h1>
-              <img
-                className=" sm:w-28 sm:h-28 mt-4 w-20 h-20"
-                src="https://i.postimg.cc/Pr6WVcWD/card-1.png"
-                alt="Deodorant"
-              />
-              <MdKeyboardArrowRight className="bg-white/25 rounded-full h-6 w-6 p-1" />
-            </div>
-            <div className="cursor-pointer w-full h-24 bg-n-4 rounded-lg flex items-center justify-between px-6">
-              <h1 className="font-semibold text-[1.10rem] tracking-wide">
-                Body Wash
-                <p className="font-normal text-sm">Get Started</p>
-              </h1>
-              <img
-                className=" sm:w-28 sm:h-28 mt-4 w-20 h-20"
-                src="https://i.postimg.cc/LsFnxBbf/card-2.png"
-                alt="BodyWash"
-              />
-              <MdKeyboardArrowRight className="bg-white/25 rounded-full h-6 w-6 p-1" />
-            </div>
-          </div>
-
-          <ul className="listSection flex flex-col gap-y-[0.8rem] font-semibold text-black">
-            <li className="flex justify-between border-b border-b-n-1 py-[0.8rem] cursor-pointer ">
-              <h1 className="text-[1.1rem] ">DEODORANT</h1>
-              <span className="text-white rounded-full bg-n-5 w-6 h-6 p-1 ">
-                <MdKeyboardArrowDown className="w-full h-full" />
-              </span>
-            </li>
-            <li className="flex justify-between border-b border-b-n-1 py-[0.8rem] cursor-pointer ">
-              <h1 className="text-[1.1rem] ">BODY WASH</h1>
-              <span className="text-white rounded-full bg-n-5 w-6 h-6 p-1 ">
-                <MdKeyboardArrowDown className="w-full h-full" />
-              </span>
-            </li>
-
-            <li className="flex justify-between border-b border-b-n-1 py-[0.8rem] cursor-pointer ">
-              <h1 className="text-[1.1rem] ">LIP BALM</h1>
-              <span className="text-white rounded-full bg-n-5 w-6 h-6 p-1 ">
-                <MdKeyboardArrowDown className="w-full h-full" />
-              </span>
-            </li>
-            <li className="flex justify-between border-b border-b-n-1 py-[0.8rem] cursor-pointer ">
-              <h1 className=" text-[1.1rem] ">ABOUT</h1>
-              <span className="text-white rounded-full bg-n-5 w-6 h-6 p-1 ">
-                <MdKeyboardArrowDown className="w-full h-full " />
-              </span>
-            </li>
-          </ul>
+        <div
+          onClick={() => {
+            setIsDropDownActive(false);
+            setIsDropDownTextActive(false);
+          }}
+          className="p-5 cursor-pointer"
+        >
+          <RxCross2 className="w-6 h-6" />
         </div>
-      </div>
+        {isDropDownActive && (
+          <div className="relative px-8 h-full">
+            <ul
+              className={`absolute w-full flex flex-col px-[5.5rem] text-[1.8rem] leading-[4rem] justify-center transition-transform transform ease-in-out delay-100 duration-300 ${
+                isDropDownTextActive ? "-translate-x-full" : "translate-x-0"
+              }`}
+            >
+              <li className="font-thin cursor-pointer mb-6  relative group">
+                <span
+                  onClick={() => {
+                    setIsDropDownTextActive(true);
+                  }}
+                  className="flex w-[8rem] items-center"
+                >
+                  Shop <RiArrowRightDoubleLine />
+                </span>
+              </li>
+              <li className="cursor-pointer relative group">
+                <span className="font-semibold">Recipes</span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[7rem] mb-3"></span>
+              </li>
+              <li className="cursor-pointer relative group">
+                <span className="font-semibold">FAQ</span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[3.2rem] mb-3"></span>
+              </li>
+            </ul>
+            <ul
+              className={`absolute w-full flex flex-col px-[5.5rem] text-[1.8rem] leading-[4rem] justify-center transition-transform transform ease-in-out delay-100 duration-300 ${
+                isDropDownTextActive ? "translate-x-0" : "translate-x-full"
+              }`}
+            >
+              <li className="font-thin cursor-pointer mb-6 relative group">
+                <span
+                  onClick={() => {
+                    setIsDropDownTextActive(false);
+                  }}
+                  className="flex w-[8rem] items-center"
+                >
+                  <RiArrowLeftDoubleLine /> Back
+                </span>
+              </li>
+              <li className="cursor-pointer relative group">
+                <span className="font-semibold">Shop All</span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[7.2rem] mb-3"></span>
+              </li>
+              <li className="cursor-pointer relative group ">
+                <span className="font-semibold">Dye-Free Sprinkles</span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[16.8rem] mb-3"></span>
+              </li>
+              <li className="cursor-pointer relative group ">
+                <span className="font-semibold">Plant-Derived Colors</span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[17.8rem] mb-3"></span>
+              </li>
+              <li className="cursor-pointer relative group ">
+                <span className="font-semibold">Colorful Baking Chips</span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[18.6rem] mb-3"></span>
+              </li>
+              <li className="cursor-pointer relative group ">
+                <span className="font-semibold">Easy Frosting Mixes</span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[17rem] mb-3"></span>
+              </li>
+              <li className="cursor-pointer relative group ">
+                <span className="font-semibold">Bulk</span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[4rem] mb-3"></span>
+              </li>
+            </ul>
+          </div>
+        )}
+      </section>
+      <section className="flex items-center justify-between w-full mx-auto ">
+        <div
+          onClick={() => {
+            setIsDropDownActive((prev) => !prev);
+          }}
+          className=" md:hidden cursor-pointer "
+        >
+          <GoPlus className=" w-[1.5rem] h-[1.5rem] " />
+        </div>
+        <div className="md:flex  font-semibold hidden cursor-pointer ">
+          <FlyoutLink href="#" key={"4"} FlyoutContent={ShopComponent}>
+            Shop
+          </FlyoutLink>
+        </div>
+        <div className="cursor-pointer pl-2 md:pl-16 ">
+          <img
+            className="  h-[4.2rem] md:h-[5.3rem] w-[11rem] md:w-[15rem] md:ml-[2rem] lg:ml-[4rem] "
+            src="https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1503443109830-MPY9LBAY5IH18MWEUNEM/Supernatural-Logo.png?format=1500w"
+            alt=""
+          />
+        </div>
 
-      <span
-        id="open-sidebar"
-        onClick={() => {
-          setIsDropDownActive(!isDropDownActive);
-        }}
-        className="cursor-pointer h-10 w-10 flex items-center justify-center rounded-[100%] bg-white transition hover:scale-[1.05] ease-in lg:hidden duration-600"
-      >
-        <HiMenuAlt4 className="w-5 h-5" />
-      </span>
-      <div className="hidden lg:flex ">
-        <ul className=" flex items-center md:gap-x-[2rem] gap-x-[3rem] font-semibold  text-white tracking-[0.5px] px-4 ">
-          <FlyoutLink href="#" FlyoutContent={DeodorantComponent}>
-            Deodorant
-          </FlyoutLink>
-          <FlyoutLink href="#" FlyoutContent={BodyWashComponent}>
-            Body Wash
-          </FlyoutLink>
-          <FlyoutLink href="#" FlyoutContent={LipBalmComponent}>
-            Lip Balm
-          </FlyoutLink>
-          <FlyoutLink href="#" FlyoutContent={AboutComponent}>
-            About
-          </FlyoutLink>
-        </ul>
-      </div>
-      <h1 className="text-white select-none text-[3rem] font-song xl:text-[4rem] lg:mr-[10rem] ">
-        Wild
-      </h1>
-      <span className=" hidden lg:flex cursor-pointer h-10 w-30 px-4 rounded   items-center font-semibold justify-center gap-x-4  bg-white hover:opacity-[0.7] active:opacity-[0.3]">
-        <h3 className="tracking-[0.5px]">Get Started</h3>
-        <MdKeyboardArrowRight className="w-5 h-5 p-[0.125rem] bg-n-5 text-white rounded-full " />
-      </span>
-      <span className="cursor-pointer h-10 w-10 flex items-center justify-center rounded-full bg-white hover:opacity-[0.7] active:opacity-[0.3]">
-        <IoCartSharp className="w-5 h-5" />
-      </span>
+        <div className="font-thin cursor-pointer flex justify-between gap-7 ">
+          <span className="md:flex font-semibold hidden hover:opacity-[0.5] ">
+            Recipes
+          </span>
+          <span className="md:flex font-semibold hidden hover:opacity-[0.5] ">
+            FAQ
+          </span>
+          <span className="flex font-thin hover:opacity-[0.5] ">
+            Cart ({"1"})
+          </span>
+        </div>
+      </section>
     </nav>
   );
 };

@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-interface productDetails {
-  imageLink: string;
-  productTitle: string;
-  productPrice: string;
-}
+import React, { useRef } from "react";
+import { motion, useTransform, useScroll } from "framer-motion";
 
 interface productDetails {
   imageLink: string;
@@ -49,43 +43,51 @@ const productDetailData: productDetails[] = [
 ];
 
 export const ProductCard: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  return <HorizontalScrollCarousel />;
+};
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setCurrentSlide(
-        (prevSlide) => (prevSlide + 1) % productDetailData.length
-      );
-    }, 3000);
+const HorizontalScrollCarousel: React.FC = () => {
+  const targetRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
 
-    return () => clearTimeout(timer);
-  }, [currentSlide]);
+  const x = useTransform(scrollYProgress, [0, 1], ["10%", "-95%"]);
 
   return (
-    <div className="flex space-x-4 overflow-x-scroll items-center justify-center gap-[3rem]  pt-[20rem] scroll-smooth">
-      <AnimatePresence mode="wait">
-        {productDetailData.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className={`w-64 bg-orange-200 h-96 ${
-              index === currentSlide ? "block" : "hidden"
-            } transition-opacity  duration-300`}
-          >
-            <img
-              src={item.imageLink}
-              alt={item.productTitle}
-              className="w-full h-full object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-lg font-bold mb-2">{item.productTitle}</h2>
-              <p className="text-md">{item.productPrice}</p>
-            </div>
-          </motion.div>
-        ))}
-      </AnimatePresence>
+    <section ref={targetRef} className="relative h-[180vh]">
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        <motion.div style={{ x }} className="flex gap-10">
+          {productDetailData.map((item) => {
+            return <Card card={item} key={item.productTitle} />;
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const Card = ({ card }: { card: productDetails }) => {
+  return (
+    <div
+      key={card.productTitle}
+      className="group relative h-[13rem] w-[10rem] md:h-[18rem] md:w-[14rem] overflow-hidden rounded-2xl border border-n-2 bg-n-1 flex cursor-pointer items-end py-6 md:py-7 transition-transform duration-300 hover:-translate-y-8 justify-center "
+    >
+      <div
+        style={{
+          backgroundImage: `url(${card.imageLink})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        className=" mt-6 w-28 mx-auto h-28 absolute md:h-48 md:w-48 inset-0 z-0 "
+      />
+
+      <div className=" text-center -tracking-[.5px] leading-[1.5rem] ">
+        <h1 className="text-[1.1rem] md:text-[1.3rem] md:font-bold md:tracking-[0.5px] font-semibold">
+          {card.productTitle}
+        </h1>
+        <h1 className="text-[0.9rem]">Plans from {card.productPrice}</h1>
+      </div>
     </div>
   );
 };

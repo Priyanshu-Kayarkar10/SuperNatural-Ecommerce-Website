@@ -3,6 +3,7 @@ import { Suspense, lazy } from "react";
 import Loader from "./Components/Loader";
 import Navbar from "./Components/Header/Navbar";
 import { ProductCard } from "./Pages/ProductCard";
+import Something from "./Pages/Something";
 
 const Home = lazy(() => import("./Pages/Home"));
 const Cart = lazy(() => import("./Pages/Cart"));
@@ -17,7 +18,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/product" element={<ProductCard />} />
+          <Route path="/product" element={<Something />} />
         </Routes>
       </Suspense>
     </Router>
