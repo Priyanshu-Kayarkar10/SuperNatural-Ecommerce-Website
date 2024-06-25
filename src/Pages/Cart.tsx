@@ -1,110 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import ShoppingCard from "../Components/Cart/ShoppingCard";
 
-const Sidebar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleSidebarToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    setIsOpen(!isOpen);
-  };
-
-  const handleClickOutside = (e: MouseEvent) => {
-    const sidebar = document.getElementById("sidebar");
-    const openSidebarButton = document.getElementById("open-sidebar");
-
-    if (
-      sidebar &&
-      openSidebarButton &&
-      !sidebar.contains(e.target as Node) &&
-      !openSidebarButton.contains(e.target as Node)
-    ) {
-      setIsOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+const Cart: React.FC = () => {
+  const [totalPrice, setTotalPrice] = useState<number>(9955);
 
   return (
-    <div className="bg-gray-100 h-screen flex overflow-hidden ">
-      {/* Sidebar */}
-      <div
-        id="sidebar"
-        className={`absolute bg-gray-800 text-white w-full h-56 overflow-y-auto transition-transform transform ${
-          isOpen ? "translate-y-0" : "-translate-y-full"
-        } ease-in-out duration-300`}
-      >
-        {/* Sidebar Content */}
-        <div className="p-4">
-          <h1 className="text-2xl font-semibold">Sidebar</h1>
-          <ul className="mt-4">
-            <li className="mb-2">
-              <a href="#" className="block hover:text-indigo-400">
-                Home
-              </a>
-            </li>
-            <li className="mb-2">
-              <a href="#" className="block hover:text-indigo-400">
-                About
-              </a>
-            </li>
-            <li className="mb-2">
-              <a href="#" className="block hover:text-indigo-400">
-                Services
-              </a>
-            </li>
-            <li className="mb-2">
-              <a href="#" className="block hover:text-indigo-400">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
+    <div className="w-full pt-[8rem]  md:pt-[12rem]   min-h-[30rem] h-auto font-space md:px-[3rem] py-12 px-5 lg:px-[5rem] ">
+      <h1 className="text-2xl py-4 tracking-[0.5px] md:font-semibold ">
+        Shopping Cart
+      </h1>
+      <div className="w-full h-auto mt-2 ">
+        {/* CARD START */}
+
+        <ShoppingCard
+          productPrice="14.99"
+          productTitle="New! Rainbow Crunchies Sprinkles"
+          productimageLink="https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/967c3c2f-85a1-4e02-a455-2cfcee86390a/Supernatural_Rainbow-Softies-1lb_2204.png?format=750w"
+          productSize="16oz"
+          key={"1"}
+        />
+        <ShoppingCard
+          productPrice="14.99"
+          productTitle="New! Rainbow Crunchies Sprinkles"
+          productimageLink="https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/967c3c2f-85a1-4e02-a455-2cfcee86390a/Supernatural_Rainbow-Softies-1lb_2204.png?format=750w"
+          productSize="16oz"
+          key={"1"}
+        />
+
+        {/* CARD START */}
       </div>
-
-      {/* Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Navbar */}
-        <div className="bg-white shadow">
-          <div className="container mx-auto">
-            <div className="flex justify-between items-center py-4 px-2">
-              <h1 className="text-xl font-semibold">Animated Drawer</h1>
-
-              <button
-                className="text-gray-500 hover:text-gray-600"
-                id="open-sidebar"
-                onClick={handleSidebarToggle}
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        {/* Content Body */}
-        <div className="flex-1 overflow-auto p-4">
-          <h1 className="text-2xl font-semibold">Welcome to our website</h1>
-          <p>... Content goes here ...</p>
-        </div>
+      <div className="w-full md:pl-[60%] lg:pl-[70%] flex mt-6 md:mt-10 items-center justify-between px-2 ">
+        <h1 className="text-lg ">Subtotal</h1>
+        <span className="text-2xl tracking-1  ">${totalPrice}</span>
+      </div>
+      <div className="flex items-center justify-center md:pl-[60%] lg:pl-[70%] mt-10 md:pb-5 w-full ">
+        <button className="w-full bg-black text-white py-5 rounded-full text-xl font-semibold md:tracking-[1px] tracking-[2px] hover:opacity-[0.8]  ">
+          CHECKOUT
+        </button>
       </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default Cart;

@@ -1,9 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import Loader from "./Components/Loader";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./Components/Header/Navbar";
-import { ProductCard } from "./Pages/ProductCard";
+import Loader from "./Components/Loader";
 import Something from "./Pages/Something";
+import Footer from "./Components/Footer";
 
 const Home = lazy(() => import("./Pages/Home"));
 const Cart = lazy(() => import("./Pages/Cart"));
@@ -21,6 +21,7 @@ const App = () => {
           <Route path="/product" element={<Something />} />
         </Routes>
       </Suspense>
+      <Footer />
     </Router>
   );
 };

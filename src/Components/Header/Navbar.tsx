@@ -3,6 +3,7 @@ import { GoPlus } from "react-icons/go";
 import { RiArrowLeftDoubleLine, RiArrowRightDoubleLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 import { FlyoutLink, ShopComponent } from "./Dropdown";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isDropDownActive, setIsDropDownActive] = useState<boolean>(false);
@@ -66,7 +67,7 @@ const Navbar: React.FC = () => {
               </li>
               <li className="cursor-pointer relative group">
                 <span className="font-semibold">Recipes</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[7rem] mb-3"></span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[6.6rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group">
                 <span className="font-semibold">FAQ</span>
@@ -94,15 +95,15 @@ const Navbar: React.FC = () => {
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Dye-Free Sprinkles</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[16.8rem] mb-3"></span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[16.2rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Plant-Derived Colors</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[17.8rem] mb-3"></span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[17.5rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Colorful Baking Chips</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[18.6rem] mb-3"></span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[18.3rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Easy Frosting Mixes</span>
@@ -110,7 +111,7 @@ const Navbar: React.FC = () => {
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Bulk</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[4rem] mb-3"></span>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[3.8rem] mb-3"></span>
               </li>
             </ul>
           </div>
@@ -130,13 +131,13 @@ const Navbar: React.FC = () => {
             Shop
           </FlyoutLink>
         </div>
-        <div className="cursor-pointer pl-2 md:pl-16 ">
+        <Link to="/" className="cursor-pointer pl-2 md:pl-16 ">
           <img
             className="  h-[4.2rem] md:h-[5.3rem] w-[11rem] md:w-[15rem] md:ml-[2rem] lg:ml-[4rem] "
             src="https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1503443109830-MPY9LBAY5IH18MWEUNEM/Supernatural-Logo.png?format=1500w"
             alt=""
           />
-        </div>
+        </Link>
 
         <div className="font-thin cursor-pointer flex justify-between gap-7 ">
           <span className="md:flex font-semibold hidden hover:opacity-[0.5] ">
@@ -145,9 +146,9 @@ const Navbar: React.FC = () => {
           <span className="md:flex font-semibold hidden hover:opacity-[0.5] ">
             FAQ
           </span>
-          <span className="flex font-thin hover:opacity-[0.5] ">
+          <Link to="/cart" className="flex font-thin hover:opacity-[0.5] ">
             Cart ({"1"})
-          </span>
+          </Link>
         </div>
       </section>
     </nav>

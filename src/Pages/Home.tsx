@@ -1,9 +1,5 @@
 import { useEffect, useRef } from "react";
-import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
-import { ProductCard } from "./ProductCard";
-import SliderCard from "../Components/Home/SliderCard";
-import Footer from "../Components/Footer";
-import FeatureCard from "../Components/Home/FeatureCard";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 const Home = () => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -103,7 +99,7 @@ const Home = () => {
           </p>
           <button className=" text-right text-[2rem] font-semibold hover:text-white group relative lg:text-[3rem]  ">
             Shop frostings.
-            <span className="absolute right-0 bottom-0 w-0 h-[3px] bg-white transition-all duration-500 group-hover:w-[13.5rem] lg:group-hover:w-[21rem] "></span>
+            <span className="absolute right-0 bottom-0 w-0 h-[3px] bg-white transition-all duration-500 group-hover:w-[14.8rem] lg:group-hover:w-[21.8rem] lg:mb-1 "></span>
           </button>
         </div>
       </div>
@@ -120,7 +116,7 @@ const Home = () => {
           </p>
           <button className="text-left text-[2rem] font-semibold hover:text-yellow group relative lg:text-[3rem]  ">
             Shop chips.
-            <span className="absolute left-0 bottom-0 w-0 h-[3px] lg:mb-1 bg-n-1 transition-all duration-500 group-hover:w-[10.3rem] lg:group-hover:w-[15.7rem] "></span>
+            <span className="absolute left-0 bottom-0 w-0 h-[3px] lg:mb-1 bg-n-1 transition-all duration-500 group-hover:w-[10.7rem] lg:group-hover:w-[15.7rem] "></span>
           </button>
         </div>
         <span className="lg:w-[50%] pb-20 ">
@@ -152,7 +148,7 @@ const Home = () => {
           </p>
           <button className=" text-right text-[2rem] font-semibold hover:text-black group relative lg:text-[3rem]  ">
             Shop frostings.
-            <span className="absolute right-0 bottom-0 w-0 h-[3px] bg-black transition-all duration-500 group-hover:w-[13.7rem] lg:group-hover:w-[20.3rem] "></span>
+            <span className="absolute right-0 bottom-0 w-0 h-[3px] bg-black transition-all duration-500 group-hover:w-[14.5rem] lg:group-hover:w-[22rem] lg:mb-1 "></span>
           </button>
         </div>
       </div>
@@ -169,7 +165,7 @@ const Home = () => {
           </p>
           <button className="text-left text-[2rem] font-semibold hover:text-black group relative lg:text-[3rem]  ">
             Shop big bags.
-            <span className="absolute left-0 bottom-0 w-0 h-[3px] lg:mb-1 bg-black transition-all duration-500 group-hover:w-[13.4rem] lg:group-hover:w-[21rem] "></span>
+            <span className="absolute left-0 bottom-0 w-0 h-[3px] lg:mb-1 bg-black transition-all duration-500 group-hover:w-[13.8rem] lg:group-hover:w-[21rem] "></span>
           </button>
         </div>
         <span className="lg:w-[50%]  pb-20 ">
@@ -180,8 +176,6 @@ const Home = () => {
           />
         </span>
       </div>
-
-      <Footer />
     </section>
   );
 };
