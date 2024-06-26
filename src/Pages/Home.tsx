@@ -39,46 +39,9 @@ const Home = () => {
     }
   }, []);
 
-  interface Step {
-    heading: string;
-    para: string;
-  }
-
-  const stepData: Step[] = [
-    {
-      heading: `1. Choose your case🎨`,
-      para: "Our reusable Wild case is a stylish and timeless design - all you have to do is pick your colour.",
-    },
-    {
-      heading: "2. Pick scents 🍭",
-      para: `Choose your favourite Wild fragrance and we'll take care of the rest.`,
-    },
-    {
-      heading: "3. Subscribe & save or buy once 📦",
-      para: "We will ship your refills out to you exactly as and when you want.",
-    },
-  ];
-
-  const StepsList: React.FC<{ steps: Step[] }> = ({ steps }) => (
-    <ul className="flex flex-col gap-y-8   ">
-      {steps.map((step, index) => (
-        <li className="" key={index}>
-          <h3 className="font-semibold md:text-[1.2rem] text-[1.1rem] py-3 ">
-            {step.heading}
-          </h3>
-          <p className=" text-[1.05rem] ">{step.para}</p>
-        </li>
-      ))}
-      <button className="uppercase flex items-start w-[10rem] justify-between text-white font-semibold -tracking-[0.2px]  text-[0.9rem]  p-3 rounded-lg bg-n-5 ">
-        Get Started{" "}
-        <MdKeyboardArrowRight className="bg-white/25 rounded-full h-[1.45rem] w-[1.45rem] p-1" />
-      </button>
-    </ul>
-  );
-
   return (
-    <section className="font-space">
-      <div className="w-full bg-[url('https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1549839389454-V3EMXKBSKP3WS3IAJ9WE/yellow_messy_2000x1350_v2.jpg?format=1500w')] h-screen bg-center bg-no-repeat  " />
+    <section className="font-space w-full ">
+      <div className="w-full bg-[url('https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1549839389454-V3EMXKBSKP3WS3IAJ9WE/yellow_messy_2000x1350_v2.jpg?format=1500w')] h-screen bg-cover bg-center bg-no-repeat  " />
       <div className="w-full py-16 md:px-[3rem] lg:flex px-5 lg:px-[5rem] lg:gap-x-[1.3rem] bg-[url('https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1718993730398-OJQU6OW9BUF7LY0T9B52/Scoop+AShop+2.png?format=2500w')]  bg-no-repeat ">
         <span className="lg:w-[50%] pb-20 ">
           <img

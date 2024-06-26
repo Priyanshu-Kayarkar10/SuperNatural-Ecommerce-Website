@@ -4,6 +4,7 @@ import { RiArrowLeftDoubleLine, RiArrowRightDoubleLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 import { FlyoutLink, ShopComponent } from "./Dropdown";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isDropDownActive, setIsDropDownActive] = useState<boolean>(false);
@@ -90,7 +91,18 @@ const Navbar: React.FC = () => {
                 </span>
               </li>
               <li className="cursor-pointer relative group">
-                <span className="font-semibold">Shop All</span>
+                <NavLink
+                  onClick={() => {
+                    setIsDropDownActive(false);
+                    setIsDropDownTextActive(false);
+                  }}
+                  to={"/shop-supernatural"}
+                  className={({ isActive }) =>
+                    `font-semibold  ${isActive ? "text-white" : ""}`
+                  }
+                >
+                  Shop All
+                </NavLink>
                 <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[7.2rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group ">
@@ -127,7 +139,7 @@ const Navbar: React.FC = () => {
           <GoPlus className=" w-[1.5rem] h-[1.5rem] " />
         </div>
         <div className="md:flex  font-semibold hidden cursor-pointer ">
-          <FlyoutLink href="#" key={"4"} FlyoutContent={ShopComponent}>
+          <FlyoutLink key={"4"} FlyoutContent={ShopComponent}>
             Shop
           </FlyoutLink>
         </div>

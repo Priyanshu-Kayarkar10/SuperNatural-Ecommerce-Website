@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 export const FlyoutLink = ({
   children,
-  href,
   FlyoutContent,
 }: {
   children: React.ReactNode;
-  href: string;
   FlyoutContent?: React.ElementType;
 }) => {
   const [open, setOpen] = useState(false);
@@ -21,7 +20,7 @@ export const FlyoutLink = ({
       onMouseLeave={() => setOpen(false)}
       className="relative w-fit h-fit"
     >
-      <a href={href} className="relative text-black  text-lg ">
+      <div className={`relative text-black  text-lg `}>
         {children}
         <span
           style={{
@@ -29,7 +28,7 @@ export const FlyoutLink = ({
           }}
           className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full  transition-transform duration-300 ease-out"
         />
-      </a>
+      </div>
       <AnimatePresence>
         {showFlyout && (
           <motion.div
@@ -76,12 +75,66 @@ export const ShopComponent: React.FC = () => {
   ];
   return (
     <div className="w-[15rem] rounded-md bg-black p-6 shadow-xl h-[13rem] flex flex-col gap-y-1 font-normal ">
-      <span className=" hover:opacity-[0.5] ">Shop All</span>
-      <span className=" hover:opacity-[0.5] ">Dye-Free Sprinkles</span>
-      <span className=" hover:opacity-[0.5] ">Plant-Derived Colors</span>
-      <span className=" hover:opacity-[0.5] ">Colorful Baking Chips</span>
-      <span className=" hover:opacity-[0.5] ">Easy Frosting Mixes</span>
-      <span className=" hover:opacity-[0.5] ">Bulk</span>
+      <NavLink
+        to={"/shop-supernatural"}
+        className={({ isActive }) =>
+          `text-white hover:text-yellow rounded ${
+            isActive ? "text-yellow" : ""
+          }`
+        }
+      >
+        Shop All
+      </NavLink>
+      <NavLink
+        to={"/about"}
+        className={({ isActive }) =>
+          `text-white hover:text-yellow rounded ${
+            isActive ? "text-yellow" : ""
+          }`
+        }
+      >
+        Dye-Free Sprinkles
+      </NavLink>
+      <NavLink
+        to={"/about"}
+        className={({ isActive }) =>
+          `text-white hover:text-yellow rounded ${
+            isActive ? "text-yellow" : ""
+          }`
+        }
+      >
+        Plant-Derived Colors
+      </NavLink>
+      <NavLink
+        to={"/about"}
+        className={({ isActive }) =>
+          `text-white hover:text-yellow rounded ${
+            isActive ? "text-yellow" : ""
+          }`
+        }
+      >
+        Colorful Baking Chips
+      </NavLink>
+      <NavLink
+        to={"/about"}
+        className={({ isActive }) =>
+          `text-white hover:text-yellow rounded ${
+            isActive ? "text-yellow" : ""
+          }`
+        }
+      >
+        Easy Frosting Mixes
+      </NavLink>
+      <NavLink
+        to={"/about"}
+        className={({ isActive }) =>
+          `text-white hover:text-yellow rounded ${
+            isActive ? "text-yellow" : ""
+          }`
+        }
+      >
+        Bulk
+      </NavLink>
     </div>
   );
 };

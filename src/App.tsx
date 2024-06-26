@@ -4,6 +4,7 @@ import Navbar from "./Components/Header/Navbar";
 import Loader from "./Components/Loader";
 import Something from "./Pages/Something";
 import Footer from "./Components/Footer";
+import Shop from "./Pages/Shop";
 
 const Home = lazy(() => import("./Pages/Home"));
 const Cart = lazy(() => import("./Pages/Cart"));
@@ -18,7 +19,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/product" element={<Something />} />
+          <Route path="/shop-supernatural" element={<Shop />} />
         </Routes>
       </Suspense>
       <Footer />

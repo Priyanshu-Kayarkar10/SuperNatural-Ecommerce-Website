@@ -1,93 +1,40 @@
-import React, { useRef } from "react";
-import { motion, useTransform, useScroll } from "framer-motion";
+import { FaPlus } from "react-icons/fa";
 
-interface productDetails {
-  imageLink: string;
-  productTitle: string;
-  productPrice: string;
-}
-
-const productDetailData: productDetails[] = [
-  {
-    imageLink:
-      "https://i.postimg.cc/vmzVbPz1/1661167302-untitled-design-44.png",
-    productTitle: "Deodorant",
-    productPrice: "10$",
-  },
-
-  {
-    imageLink:
-      "https://i.postimg.cc/26SB64c0/1699894139-black-body-wash-engraving.png",
-    productTitle: "Body Wash",
-    productPrice: "10$",
-  },
-
-  {
-    imageLink:
-      "https://i.postimg.cc/1Xgn0yZ6/1711103423-blue-lipbalm-case-engraving.png",
-    productTitle: "Lip Balm",
-    productPrice: "10$",
-  },
-
-  {
-    imageLink: "https://i.postimg.cc/Vv3SD2Yh/1661166681-refills.png",
-    productTitle: "Refills",
-    productPrice: "10$",
-  },
-
-  {
-    imageLink: "https://i.postimg.cc/1RTNmVpK/1661166689-minis.png",
-    productTitle: "Mini Deos",
-    productPrice: "10$",
-  },
-];
-
-export const ProductCard: React.FC = () => {
-  return <HorizontalScrollCarousel />;
+type ProductsProps = {
+  productId: string;
+  productImageLink?: string;
+  productName: string;
+  productPrice: number;
+  stock: number;
+  handler: () => void;
 };
 
-const HorizontalScrollCarousel: React.FC = () => {
-  const targetRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["10%", "-95%"]);
-
+const ProductCard = ({
+  productId,
+  productImageLink = "https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1696868995999-WIAOMUAJLD68MO6NX0SX/17.png",
+  productName,
+  productPrice,
+  stock,
+  handler,
+}: ProductsProps) => {
   return (
-    <section ref={targetRef} className="relative h-[180vh]">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex gap-10">
-          {productDetailData.map((item) => {
-            return <Card card={item} key={item.productTitle} />;
-          })}
-        </motion.div>
+    <div className="relative flex h-[14rem] w-[12rem] flex-col items-center py-3 bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow font-space duration-300 group group-hover:bg-slate-700 md:h-[16rem] md:w-[14rem] lg:h-[20rem] lg:w-[18rem] ">
+      <div className="absolute inset-0 bg-zinc-700/30 h-full rounded-lg w-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 select-none ">
+        <span className=" cursor-pointer p-3 bg-n-1  rounded-full active:opacity-[0.2] ">
+          <FaPlus className="text-black/90 h-5 w-5" />
+        </span>
       </div>
-    </section>
-  );
-};
-
-const Card = ({ card }: { card: productDetails }) => {
-  return (
-    <div
-      key={card.productTitle}
-      className="group relative h-[13rem] w-[10rem] md:h-[18rem] md:w-[14rem] overflow-hidden rounded-2xl border border-n-2 bg-n-1 flex cursor-pointer items-end py-6 md:py-7 transition-transform duration-300 hover:-translate-y-8 justify-center "
-    >
-      <div
-        style={{
-          backgroundImage: `url(${card.imageLink})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className=" mt-6 w-28 mx-auto h-28 absolute md:h-48 md:w-48 inset-0 z-0 "
+      <img
+        className="w-32 h-32 md:h-40 md:w-40 lg:w-56 lg:h-56 rounded mb-2"
+        src={productImageLink}
+        alt={productName}
       />
-
-      <div className=" text-center -tracking-[.5px] leading-[1.5rem] ">
-        <h1 className="text-[1.1rem] md:text-[1.3rem] md:font-bold md:tracking-[0.5px] font-semibold">
-          {card.productTitle}
-        </h1>
-        <h1 className="text-[0.9rem]">Plans from {card.productPrice}</h1>
-      </div>
+      <h1 className=" px-2 md:px-4 text-[0.9rem] overflow-hidden font-semibold md:text-[1.125rem] lg:text-[1.25rem] mb-1 lg:mb-2 text-center ">
+        {productName}
+      </h1>
+      <p className="text-lg md:text-xl font-bold">₹{productPrice}</p>
     </div>
   );
 };
+
+export default ProductCard;
