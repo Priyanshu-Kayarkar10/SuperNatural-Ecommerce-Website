@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="navbar absolute w-full h-[5rem] bg-transparent overflow-visible flex items-center justify-between px-5 md:px-[3rem] md:py-[5rem] {overflow-hidden} z-50 font-space lg:px-[5rem]">
+    <nav className="navbar absolute w-full md:h-[5rem] h-[6rem] bg-transparent overflow-visible flex items-center justify-between px-5 md:px-[3rem] md:py-[5rem] {overflow-hidden} z-50 font-space lg:px-[5rem]">
       <section
         className={` md:hidden fixed top-0 right-0 w-full h-full bg-n-1 transition-transform transform ${
           isDropDownActive ? "translate-x-0" : "translate-x-full"
