@@ -1,4 +1,4 @@
-import { FaPlus } from "react-icons/fa";
+import { MdOutlineAdd } from "react-icons/md";
 
 type ProductsProps = {
   productId: string;
@@ -20,8 +20,8 @@ const ProductCard = ({
   return (
     <div className="relative flex h-[14rem] w-[12rem] flex-col items-center py-3 bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow font-space duration-300 group group-hover:bg-slate-700 md:h-[16rem] md:w-[14rem] lg:h-[20rem] lg:w-[18rem] ">
       <div className="absolute inset-0 bg-zinc-700/30 h-full rounded-lg w-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 select-none ">
-        <span className=" cursor-pointer p-3 bg-n-1  rounded-full active:opacity-[0.2] ">
-          <FaPlus className="text-black/90 h-5 w-5" />
+        <span className=" cursor-pointer p-1 md:p-2 bg-n-1  rounded-full active:opacity-[0.2] ">
+          <MdOutlineAdd className="text-black/90 h-7 w-7 md:h-8 md:w-8 " />
         </span>
       </div>
       <img

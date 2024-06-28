@@ -3,13 +3,16 @@ import { GoPlus } from "react-icons/go";
 import { RiArrowLeftDoubleLine, RiArrowRightDoubleLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 import { FlyoutLink, ShopComponent } from "./Dropdown";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
   const [isDropDownActive, setIsDropDownActive] = useState<boolean>(false);
   const [isDropDownTextActive, setIsDropDownTextActive] =
     useState<boolean>(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -33,7 +36,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="navbar absolute w-full h-[6rem] bg-transparent overflow-visible flex items-center justify-between px-5 md:px-[3rem] md:py-[6.5rem] {overflow-hidden} z-50 font-space lg:px-[5rem] ">
+    <nav className="navbar absolute w-full h-[5rem] bg-transparent overflow-visible flex items-center justify-between px-5 md:px-[3rem] md:py-[5rem] {overflow-hidden} z-50 font-space lg:px-[5rem]">
       <section
         className={` md:hidden fixed top-0 right-0 w-full h-full bg-n-1 transition-transform transform ${
           isDropDownActive ? "translate-x-0" : "translate-x-full"
@@ -67,12 +70,39 @@ const Navbar: React.FC = () => {
                 </span>
               </li>
               <li className="cursor-pointer relative group">
-                <span className="font-semibold">Recipes</span>
+                <NavLink
+                  to={"/shop-supernatural"}
+                  onClick={() => {
+                    setIsDropDownActive(false);
+                    setIsDropDownTextActive(false);
+                  }}
+                  className={({ isActive }) =>
+                    `font-semibold  ${isActive ? "text-white" : ""}`
+                  }
+                >
+                  Shop All
+                </NavLink>
                 <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[6.6rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group">
-                <span className="font-semibold">FAQ</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[3.2rem] mb-3"></span>
+                {isLoggedIn ? (
+                  //TODO: add Profile
+                  <span className="font-semibold">Profile</span>
+                ) : (
+                  <NavLink
+                    to="/login"
+                    onClick={() => {
+                      setIsDropDownActive(false);
+                      setIsDropDownTextActive(false);
+                    }}
+                    className={({ isActive }) =>
+                      `font-semibold  ${isActive ? "text-white" : ""}`
+                    }
+                  >
+                    Login
+                  </NavLink>
+                )}
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[5rem] mb-3"></span>
               </li>
             </ul>
             <ul
@@ -89,21 +119,6 @@ const Navbar: React.FC = () => {
                 >
                   <RiArrowLeftDoubleLine /> Back
                 </span>
-              </li>
-              <li className="cursor-pointer relative group">
-                <NavLink
-                  onClick={() => {
-                    setIsDropDownActive(false);
-                    setIsDropDownTextActive(false);
-                  }}
-                  to={"/shop-supernatural"}
-                  className={({ isActive }) =>
-                    `font-semibold  ${isActive ? "text-white" : ""}`
-                  }
-                >
-                  Shop All
-                </NavLink>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[7.2rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Dye-Free Sprinkles</span>
@@ -152,13 +167,32 @@ const Navbar: React.FC = () => {
         </Link>
 
         <div className="font-thin cursor-pointer flex justify-between gap-7 ">
-          <span className="md:flex font-semibold hidden hover:opacity-[0.5] ">
-            Recipes
-          </span>
-          <span className="md:flex font-semibold hidden hover:opacity-[0.5] ">
-            FAQ
-          </span>
-          <Link to="/cart" className="flex font-thin hover:opacity-[0.5] ">
+          {isLoggedIn ? (
+            <>
+              <span className="md:flex font-semibold hidden hover:opacity-[0.5] ">
+                Profile
+              </span>
+              <span className="md:flex font-semibold hidden hover:opacity-[0.5] ">
+                Logout
+              </span>
+            </>
+          ) : (
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                `font-semibold md:flex hidden hover:opacity-[0.5] text-lg  ${
+                  isActive ? "text-yellow  " : ""
+                }`
+              }
+            >
+              LogIn
+            </NavLink>
+          )}
+
+          <Link
+            to="/cart"
+            className="flex font-thin hover:opacity-[0.5] md:text-lg "
+          >
             Cart ({"1"})
           </Link>
         </div>

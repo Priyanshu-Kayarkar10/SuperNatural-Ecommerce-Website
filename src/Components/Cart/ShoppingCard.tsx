@@ -62,7 +62,7 @@ const ShoppingCard: React.FC<productDetails> = ({
               <AddSvg />
             </button>
           </div>
-          <p className="text-lg font-semibold">${productPrice}</p>
+          <p className="text-lg lg:text-xl">${productPrice}</p>
         </div>
       </div>
     </div>
