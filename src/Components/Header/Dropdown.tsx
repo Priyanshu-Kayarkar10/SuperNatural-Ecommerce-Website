@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MdKeyboardArrowRight } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
 export const FlyoutLink = ({
@@ -49,12 +48,18 @@ export const FlyoutLink = ({
   );
 };
 
+/*
+
 interface Item {
   link: string;
   title: string;
 }
+  */
 
 export const ShopComponent: React.FC = () => {
+  /* 
+
+
   const data: Item[] = [
     {
       link: "https://i.postimg.cc/QxLWX7Z3/1650559088-case-thumb.jpg",
@@ -73,6 +78,8 @@ export const ShopComponent: React.FC = () => {
       title: "Mini Deos",
     },
   ];
+  */
+
   return (
     <div className="w-[15rem] rounded-md bg-black p-6 shadow-xl h-[13rem] flex flex-col gap-y-1 font-normal ">
       <NavLink

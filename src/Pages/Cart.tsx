@@ -6,10 +6,16 @@ import { useNavigate } from "react-router-dom";
 const Cart: React.FC = () => {
   const navigate = useNavigate();
 
-  const [totalPrice, setTotalPrice] = useState<number>(9955);
+  const [
+    totalPrice,
+    //  setTotalPrice
+  ] = useState<number>(9955);
 
   const [couponCode, setCouponCode] = useState<string>("");
-  const [discount, setDiscount] = useState<number>(0);
+  const [
+    discount,
+    //  setDiscount
+  ] = useState<number>(0);
 
   const [isValidCouponCode, setIsValidCouponCode] = useState<boolean>(false);
 

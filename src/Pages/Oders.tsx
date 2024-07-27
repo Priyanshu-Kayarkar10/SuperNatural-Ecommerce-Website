@@ -1,13 +1,13 @@
-import { ReactElement } from "react";
+// import { ReactElement } from "react";
 
-type DataType = {
-  id: string;
-  amount: number;
-  quantity: number;
-  discount: number;
-  status: ReactElement;
-  action: ReactElement;
-};
+// type DataType = {
+//   id: string;
+//   amount: number;
+//   quantity: number;
+//   discount: number;
+//   status: ReactElement;
+//   action: ReactElement;
+// };
 
 // const column: Column<DataType>[] = [
 //   {

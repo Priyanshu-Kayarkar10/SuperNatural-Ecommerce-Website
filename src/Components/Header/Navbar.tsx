@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import { GoPlus } from "react-icons/go";
 import { RiArrowLeftDoubleLine, RiArrowRightDoubleLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FlyoutLink, ShopComponent } from "./Dropdown";
 
 const Navbar: React.FC = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [isDropDownActive, setIsDropDownActive] = useState<boolean>(false);
   const [isDropDownTextActive, setIsDropDownTextActive] =
     useState<boolean>(false);
 
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [
+    isLoggedIn,
+    // setIsLoggedIn
+  ] = useState<boolean>(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {

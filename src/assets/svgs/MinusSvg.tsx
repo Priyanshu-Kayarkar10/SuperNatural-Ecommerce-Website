@@ -7,7 +7,6 @@ const MinusSvg = () => {
       viewBox="0 0 22 22"
       width="22"
       xmlns="http://www.w3.org/2000/svg"
-      sx="[object Object]"
       className="css-y880pu"
     >
       <path clipRule="evenodd" d="M3 10v2h16v-2H3z" fillRule="evenodd"></path>

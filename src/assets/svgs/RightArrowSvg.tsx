@@ -10,9 +10,7 @@ const RightArrowSvg = () => {
       direction="left"
       has-dark-theme="true"
       is-inline="false"
-      parallax="true"
       parallax-offset="120"
-      class=""
       stadium-color="teal"
       circle-color="white-faint"
     >
