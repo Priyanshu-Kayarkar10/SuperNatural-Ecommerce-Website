@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { GoPlus } from "react-icons/go";
 import { RiArrowLeftDoubleLine, RiArrowRightDoubleLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FlyoutLink, ShopComponent } from "./Dropdown";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();

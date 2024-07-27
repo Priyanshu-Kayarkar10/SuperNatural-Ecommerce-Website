@@ -1,6 +1,4 @@
 import { useEffect, useRef } from "react";
-import { MdKeyboardArrowRight } from "react-icons/md";
-
 const Home = () => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
