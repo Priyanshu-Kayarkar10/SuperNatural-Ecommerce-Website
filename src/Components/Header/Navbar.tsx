@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
               </li>
             </ul>
             <ul
-              className={`absolute h-full pb-[15rem] w-full flex flex-col px-[5.5rem] text-[1.8rem] leading-[3.5rem] justify-center transition-transform transform ease-in-out delay-100 duration-300 ${
+              className={`absolute h-full pb-[8rem] w-full flex flex-col px-[5.5rem] text-[1.6rem] leading-[3rem] justify-center transition-transform transform ease-in-out delay-100 duration-300 ${
                 isDropDownTextActive ? "translate-x-0" : "translate-x-full"
               }`}
             >
@@ -124,23 +124,18 @@ const Navbar: React.FC = () => {
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Dye-Free Sprinkles</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[16.2rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Plant-Derived Colors</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[17.5rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Colorful Baking Chips</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[18.3rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Easy Frosting Mixes</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[17rem] mb-3"></span>
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Bulk</span>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-500 group-hover:w-[3.8rem] mb-3"></span>
               </li>
             </ul>
           </div>
