@@ -3,6 +3,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 
 const Home = () => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
   const nextBtnRef = useRef<HTMLButtonElement | null>(null);
   const previousBtnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -33,14 +34,14 @@ const Home = () => {
         nextBtnRef.current?.removeEventListener("click", handleNextClick);
         previousBtnRef.current?.removeEventListener(
           "click",
-          handlePreviousClick
+          handlePreviousClick,
         );
       };
     }
   }, []);
 
   return (
-    <section className="font-space w-full ">
+    <section className="font-space w-full  ">
       <div className="w-full bg-[url('https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1549839389454-V3EMXKBSKP3WS3IAJ9WE/yellow_messy_2000x1350_v2.jpg?format=1500w')] h-screen bg-cover bg-center bg-no-repeat  " />
       <div className="w-full py-16 md:px-[3rem] lg:flex px-5 lg:px-[5rem] lg:gap-x-[1.3rem] bg-[url('https://images.squarespace-cdn.com/content/v1/599c75ede9bfdfe898f03f2a/1718993730398-OJQU6OW9BUF7LY0T9B52/Scoop+AShop+2.png?format=2500w')]  bg-no-repeat ">
         <span className="lg:w-[50%] pb-20 ">

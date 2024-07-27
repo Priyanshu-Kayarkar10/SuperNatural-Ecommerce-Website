@@ -53,8 +53,15 @@ export default {
         1: "1px",
         2: "2px",
       },
-      keyframes: {},
-      animation: {},
+      keyframes: {
+        appear: {
+          "0%": { opacity: 0, transform: "translateX(-100px)" },
+          "100%": { opacity: 1, transform: "translateX(0)" },
+        },
+      },
+      animation: {
+        appear: "appear 1s ease-out forwards",
+      },
     },
   },
   plugins: [

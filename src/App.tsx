@@ -9,7 +9,7 @@ const Home = lazy(() => import("./Pages/Home"));
 const Cart = lazy(() => import("./Pages/Cart"));
 const Search = lazy(() => import("./Pages/Search"));
 const Shipping = lazy(() => import("./Pages/Shipping"));
-const Login = lazy(() => import("./Pages/Login"));
+const Auth = lazy(() => import("./Pages/Auth"));
 const Oders = lazy(() => import("./Pages/Oders"));
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
           {/*  Not Logged In Route */}
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Auth />} />
 
           {/* Logged In User Routes */}
 
