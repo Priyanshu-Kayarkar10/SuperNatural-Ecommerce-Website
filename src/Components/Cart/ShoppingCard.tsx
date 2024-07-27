@@ -20,7 +20,7 @@ const ShoppingCard: React.FC<productDetails> = ({
 }) => {
   const [numberOfItem, setNumberOfItem] = useState<number>(1);
   return (
-    <div className="w-full mt-2 md:mt-4 lg:mt-8 h-[11rem] flex items-center gap-6 md:gap-8 lg:gap-10 p-4 {shadow-md} border-b border-b-black/25  ">
+    <div className="w-full mt-2 md:mt-4 lg:mt-8 h-[11.5rem] flex items-center gap-6 md:gap-8 lg:gap-10 p-4  border-b border-b-black/25 relative ">
       <img
         className="w-24 h-24 mb-10 object-contain md:w-32 md:h-32 lg:w-36 lg:h-36 md:mb-6 xl:h-40 xl:w-40 xl:mb-2 cursor-pointer "
         src={productimageLink}
