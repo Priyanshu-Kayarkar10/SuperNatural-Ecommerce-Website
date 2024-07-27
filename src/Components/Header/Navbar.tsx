@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar absolute w-full md:h-[5rem] h-[6rem] bg-transparent overflow-visible flex items-center justify-between px-5 md:px-[3rem] md:py-[5rem] {overflow-hidden} z-50 font-space lg:px-[5rem]">
       <section
-        className={` md:hidden fixed top-0 right-0 w-full h-full bg-n-1 transition-transform transform ${
+        className={` overflow-hidden inset-0 md:hidden fixed top-0 right-0 w-full h-full bg-n-1 transition-transform transform ${
           isDropDownActive ? "translate-x-0" : "translate-x-full"
         } ease-in-out duration-300`}
         style={{ zIndex: 1000 }}
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
               </li>
             </ul>
             <ul
-              className={`absolute w-full flex flex-col px-[5.5rem] text-[1.8rem] leading-[4rem] justify-center transition-transform transform ease-in-out delay-100 duration-300 ${
+              className={`absolute h-full pb-[15rem] w-full flex flex-col px-[5.5rem] text-[1.8rem] leading-[3.5rem] justify-center transition-transform transform ease-in-out delay-100 duration-300 ${
                 isDropDownTextActive ? "translate-x-0" : "translate-x-full"
               }`}
             >

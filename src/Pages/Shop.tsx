@@ -8,7 +8,7 @@ const Shop = () => {
         Our Products 🥳{" "}
       </h1>
 
-      <div className="w-full min-h-screen flex flex-wrap justify-center  gap-x-[1.5rem] md:gap-x-[4rem] lg:gap-x-[5.2rem] pb-[8rem] gap-y-[2rem] bg-transparent lg:gap-y-[3.2rem] ">
+      <div className="w-full min-h-screen flex flex-wrap justify-center  gap-x-[0.5rem] md:gap-x-[4rem] lg:gap-x-[5.2rem] pb-[8rem] gap-y-[2rem] bg-transparent lg:gap-y-[3.2rem] ">
         <ProductCard
           key="9901"
           productName="Plant Based Food Color"

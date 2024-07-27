@@ -42,7 +42,7 @@ const ShoppingCard: React.FC<productDetails> = ({
           </div>
         </div>
         {/* Second Part */}
-        <div className="flex justify-between items-center mt-6">
+        <div className="flex justify-between items-center sm:mt-6">
           <div className="flex items-center space-x-2">
             <button
               onClick={() => setNumberOfItem((prev) => Math.max(1, prev - 1))}
