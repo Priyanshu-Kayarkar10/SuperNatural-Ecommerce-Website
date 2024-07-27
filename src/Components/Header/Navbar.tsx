@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
               </li>
             </ul>
             <ul
-              className={`absolute h-full pb-[8rem] w-full flex flex-col px-[5.5rem] text-[1.6rem] leading-[3rem] justify-center transition-transform transform ease-in-out delay-100 duration-300 ${
+              className={`absolute h-full pb-[20rem] w-full flex flex-col px-[3rem] pr-[1rem] text-[1.6rem] leading-[3rem] justify-center transition-transform transform ease-in-out delay-100 duration-300  ${
                 isDropDownTextActive ? "translate-x-0" : "translate-x-full"
               }`}
             >
@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
                 </span>
               </li>
               <li className="cursor-pointer relative group ">
-                <span className="font-semibold">Dye-Free Sprinkles</span>
+                <span className="font-semibold ">Dye-Free Sprinkles</span>
               </li>
               <li className="cursor-pointer relative group ">
                 <span className="font-semibold">Plant-Derived Colors</span>
