@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
               </li>
             </ul>
             <ul
-              className={`absolute h-full pb-[20rem] w-full flex flex-col px-[3rem] pr-[1rem] text-[1.6rem] leading-[3rem] justify-center transition-transform transform ease-in-out delay-100 duration-300  ${
+              className={`absolute h-full pb-[20rem] w-full flex flex-col px-[3.7rem] text-[1.6rem] leading-[3rem] justify-center transition-transform transform ease-in-out delay-100 duration-300  ${
                 isDropDownTextActive ? "translate-x-0" : "translate-x-full"
               }`}
             >
