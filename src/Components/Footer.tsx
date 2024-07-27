@@ -10,17 +10,21 @@ const Footer = () => {
         alt=" FooterImage "
       />
       <span className="w-full h-[5rem] flex items-center justify-center gap-x-10 ">
-        <a className="hover:opacity-[0.5]" href="https://x.com/Priyanshu_twi">
+        <a className="hover:opacity-[0.5]" 
+          target="_blank"
+          href="https://x.com/Priyanshu_twi">
           <FaXTwitter className="w-8 h-8 cursor-pointer lg:w-10 lg:h-10  " />
         </a>
         <a
           className="hover:opacity-[0.5]"
+          target="_blank"
           href="https://github.com/Priyanshudotdev"
         >
           <IoLogoGithub className="w-8 h-8 cursor-pointer lg:w-10 lg:h-10 hover:opacity-[0.5] " />
         </a>
         <a
           className="hover:opacity-[0.5]"
+          target="_blank"
           href="https://linkedin.com/in/priyanshu-li"
         >
           <IoLogoLinkedin className="w-8 h-8 cursor-pointer lg:w-10 lg:h-10 hover:opacity-[0.5] " />
