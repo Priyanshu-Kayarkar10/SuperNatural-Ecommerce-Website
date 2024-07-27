@@ -7,6 +7,8 @@ Welcome to the **Supernatural**! 🌟👻
 Supernatural is an e-commerce website where you can buy supernatural products such as sprinkles, chips, frosting, and gib bags.
 Inspired from [SuperNaturalKitchen](https://www.supernaturalkitchen.com/)
 
+Deployed on Vercel, check it out :- [here](https://supernaturalkitchens.vercel.app/)
+
 ## Technologies Used
 
 - **React** with **TypeScript**
